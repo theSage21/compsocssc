@@ -28,6 +28,7 @@
           <h2 class="light-space" style="text-align: center;">The hunt begins in</h2>
           <h1 style="text-align: center; margin-bottom: 40px;">{{ starttime | timeuntil }}</h1>
           <a class='btn btn--full' href="{% url 'events:orfik:instructions' %}">Instructions</a>
+          <a class='btn btn--full' href="{% url 'events:orfik:authorize' %}">Add to Calendar</a>
           <script>
             setTimeout('window.location.reload();', 30000);
           </script>

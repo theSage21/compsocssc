@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from general import models as generalmodels
 from django.contrib import messages
+from oauth2client import client
+from apiclient import discovery
+from django.core.urlresolvers import reverse
+import httplib2
+
 
 
 def make_player(request):
@@ -108,3 +113,41 @@ def question(request, q_no):
             else:
                 data['form'] = form
     return render(request, template, data)
+
+scopes = ['https://www.googleapis.com/auth/calendar']
+
+flow = client.flow_from_clientsecrets('client_secret.json',scopes,redirect_uri='http://localhost:8000/events/orfik/auth')
+
+def authorize(request):
+    auth_uri = flow.step1_get_authorize_url()
+    return redirect(auth_uri)
+
+def add_event(request):
+    auth_code = request.GET.get('code')
+    credentials = flow.step2_exchange(auth_code)
+    http_auth = credentials.authorize(httplib2.Http())
+    calendar_service = discovery.build('calendar','v3',http=http_auth)
+
+    event = {
+        'summary': 'Orfik 2017',
+        'description': 'Orfik is Compsoc\'s online tech hunt',
+        'start': {
+            'date': '2017-01-29',
+            'timeZone': 'Asia/Kolkata',
+        },
+        'end': {
+            'date': '2017-01-30',
+            'timeZone': 'Asia/Kolkata',
+        },
+        'reminders': {
+            'useDefault': False,
+            'overrides': [
+                {'method': 'email', 'minutes': 24 * 60},
+                {'method': 'popup', 'minutes': 10},
+            ],
+        },
+    }
+    event = calendar_service.events().insert(calendarId='primary',body=event).execute()
+
+    messages.info(request,"Added to Calendar")
+    return redirect(reverse('events:orfik:home'))
