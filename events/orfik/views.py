@@ -28,7 +28,7 @@ def check_start(event):
 def home(request):
     data = {}
     template = 'orfik/home.html'
-    orfik = event_models.Event.objects.filter(appname='orfik', ongoing_event=True).order_by('start_time').last()
+    orfik = event_models.Event.objects.filter(appname='orfik').order_by('start_time').last()
     data['starttime'] = orfik.start_time
     data['started'] = check_start(orfik)
     if request.user.is_authenticated():
@@ -59,7 +59,7 @@ def instructions(request):
 def leader(request):
     data = {}
     template = 'orfik/leader.html'
-    orfik = event_models.Event.objects.filter(appname='orfik', ongoing_event=True).order_by('start_time').last()
+    orfik = event_models.Event.objects.filter(appname='orfik').order_by('start_time').last()
     endtime = orfik.end_time
     data['players'] = models.Player.objects.all().order_by('-max_level','last_solve')
     if endtime <= timezone.now():
@@ -70,7 +70,7 @@ def leader(request):
 @login_required
 def question(request, q_no):
     make_player(request)
-    orfik = event_models.Event.objects.filter(appname='orfik', ongoing_event=True).order_by('start_time').last()
+    orfik = event_models.Event.objects.filter(appname='orfik').order_by('start_time').last()
     starttime = orfik.start_time
     player = request.user.player
     # Check if orfik has started

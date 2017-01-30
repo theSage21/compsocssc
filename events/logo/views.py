@@ -25,7 +25,7 @@ def gallery(request):
 def submission(request):
     data = {}
     template = 'logo/submission.html'
-    logo = event_models.Event.objects.filter(appname='logo', ongoing_event=True).order_by('start_time').last()
+    logo = event_models.Event.objects.filter(appname='logo').order_by('start_time').last()
     data['ended'] = check_end(logo)
     if request.method == 'POST':
         form = SubmissionForm(request.POST, request.FILES)

@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     # ---
     'general',
     'events',
-    # 'events.logo',
+    'events.logo',
     'events.orfik',
     'metrics',
     # 'join',
