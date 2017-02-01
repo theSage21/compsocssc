@@ -19,7 +19,7 @@ from oauth2client.contrib import xsrfutil
 FLOW = client.flow_from_clientsecrets(
     GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,
     scope = 'https://www.googleapis.com/auth/calendar',
-    redirect_uri='http://localhost:8000/events/orfik/auth'
+    redirect_uri='http://compsocssc.pythonanywhere.com/events/orfik/auth'
 )
 
 
@@ -133,7 +133,6 @@ def authorize(request):
     credential = store.locked_get()
     if credential is None or credential.invalid == True:
         authorize_url = FLOW.step1_get_authorize_url()
-        print(request.user.is_authenticated())
         return HttpResponseRedirect(authorize_url)
     else:
         http = httplib2.Http()
@@ -141,13 +140,13 @@ def authorize(request):
         calendar_service = discovery.build('calendar', 'v3', http=http)
         event = {
             'summary': 'Orfik 2017',
-            'description': 'Orfik is Compsoc\'s online tech hunt',
+            'description': 'Orfik is Compsoc\'s online tech hunt.',
             'start': {
-                'date': '2017-02-03',
+                'date': '2017-02-10',
                 'timeZone': 'Asia/Kolkata',
             },
             'end': {
-                'date': '2017-02-04',
+                'date': '2017-02-11',
                 'timeZone': 'Asia/Kolkata',
             },
             'reminders': {
@@ -166,7 +165,6 @@ def authorize(request):
 @login_required()
 def add_event(request):
     credential = FLOW.step2_exchange(request.GET['code'])
-    print(request.user.is_authenticated())
     storage = DjangoORMStorage(CredentialsModel, 'id', request.user, 'credential')
     storage.put(credentials=credential)
     return authorize(request)
