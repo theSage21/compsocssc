@@ -119,6 +119,3 @@ pip-selfcheck.json
 
 ### Development Uploads ###
 media/
-*.iml
-.idea/misc.xml
-*.xml

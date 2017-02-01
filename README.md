@@ -13,6 +13,21 @@ You can try out the latest build using the following method:
 5. Create some dummy data if you want to.
 6. Head on to *localhost:8000* to use the website!
 
+## Contribute
+
+This is the level-up branch, the main branch for new features. 
+Below is the procedure to contribute to compsocssc
+
+1. Create a new branch for the new feature or bugfix.
+2. Develop the feature on it's own branch until complete and stable.
+3. Create a pull request to merge into level_up.
+4. level_up will be mergerd into master at regular intervals. 
+
+The features currently under development are:
+
+* Orfik Calendar event ( add_to_calendar branch)
+* Leaderboard time-evolution visualization (fix_events branch)
+
 ## Styling
 
 The project uses Sass for the styles. All the Sass lives in (HA!) /static/sass. If editing the Sass, make sure you only compile main.scss in the Sass folder and nothing else. We recommend either CodeKit to watch for changes to the Sass and JavaScript but the Sass gem's watch method should work as well.
@@ -43,3 +58,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+
