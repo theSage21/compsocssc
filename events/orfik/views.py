@@ -15,11 +15,12 @@ from website.settings.base import GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,SECRET_KEY
 from oauth2client.contrib.django_util.storage import DjangoORMStorage
 from oauth2client.contrib import xsrfutil
 
+
 FLOW = client.flow_from_clientsecrets(
     GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,
     scope = 'https://www.googleapis.com/auth/calendar',
-    redirect_uri='http://localhost:8000/events/orfik/auth')
-
+    redirect_uri='http://localhost:8000/events/orfik/auth'
+)
 
 
 def make_player(request):
