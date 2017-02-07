@@ -1,6 +1,12 @@
 from django.db import models
 
 
+styles =  "bmh,classic,dark_background,fivethirtyeight,ggplot,grayscale,"
+styles += "seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-pallette,"
+styles += "seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-pastel,"
+styles += "seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid"
+LB_STYLE_CHOICES = tuple([(i, i) for i in styles.split(',')])
+
 class Event(models.Model):
     """
     Description: Model for a CompSoc Event
@@ -14,6 +20,12 @@ class Event(models.Model):
     end_time = models.DateTimeField()
     location = models.CharField(max_length=30)
     ongoing_event = models.BooleanField(default=False, help_text="Check this if this event spans over multiple days")
+    lb_style = models.CharField(max_length=50,
+            default='ggplot',
+            choices=LB_STYLE_CHOICES,
+            help_text='''The style in which the LB is plotted if it is plotted at all.
+            Refer to https://tonysyu.github.io/raw_content/matplotlib-style-gallery/gallery.html
+            for guidance ''')
 
     PARTICIPATION_METHODS = (
         ('IN', 'Individual'),

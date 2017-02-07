@@ -15,7 +15,7 @@ def get_plot_string(attempts, orfik, max_question):
     temp = list(zip(counts.stamp, [str(i) for i in counts.index]))
     temp.sort(reverse=True)
     name_to_rank = {i[1]: 1 + index for index, i in enumerate(temp)}
-    with plt.style.context('ggplot'):
+    with plt.style.context(orfik.lb_style):
         plt.figure(figsize=(15, 5))
         plt.gca().set_xlim([orfik.start_time, orfik.end_time])
         plt.gca().set_ylim([0,  max_question])
