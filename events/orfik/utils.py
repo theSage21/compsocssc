@@ -18,7 +18,7 @@ def get_plot_string(attempts, orfik, max_question):
     with plt.style.context(orfik.lb_style):
         plt.figure(figsize=(15, 5))
         plt.gca().set_xlim([orfik.start_time, orfik.end_time])
-        plt.gca().set_ylim([0,  max_question])
+        plt.gca().set_ylim([-0.5,  max_question])
         plt.xlabel('Contest Timeline')
         plt.ylabel('Question Levels')
         for name, group in df.groupby('player'):
@@ -26,7 +26,7 @@ def get_plot_string(attempts, orfik, max_question):
             plt.plot(group.stamp, jitter(range(group.shape[0])), '.-', label=label)
         handles,labels = plt.gca().get_legend_handles_labels()
         temp = list(sorted(zip(labels, handles), key=lambda x: x[0]))
-        labels, handles = [i[0] for i in temp], [i[1] for i in temp]
+        labels, handles = [i[0] for i in temp][:15], [i[1] for i in temp][:15]
         plt.gca().legend(handles, labels, bbox_to_anchor=(1.1, 1.0))
         plt.title(orfik.name)
         # Save to string
