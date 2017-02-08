@@ -15,6 +15,18 @@ class Player(models.Model):
     max_level = models.SmallIntegerField(default=0)
     last_solve = models.DateTimeField(default=timezone.now)
 
+    def __lt__(self, other):
+        return self.max_level < other.max_level
+
+    def __gt__(self, other):
+        return self.max_level > other.max_level
+
+    def __le__(self, other):
+        return self.max_level <= other.max_level
+
+    def __ge__(self, other):
+        return self.max_level >= other.max_level
+
 
 class Question(models.Model):
     number = models.SmallIntegerField()
