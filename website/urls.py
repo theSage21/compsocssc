@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 
 
 # Site URLS
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
     # Others
