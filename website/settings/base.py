@@ -22,7 +22,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = (
-    'flat',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,13 +31,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'image_cropping',
-    'general',
     'events',
     'events.logo',
     'events.sell_it',
     'events.orfik',
-    # 'metrics',
-    # 'join',
+    'metrics',
+    'join',
     'import_export',
 )
 
