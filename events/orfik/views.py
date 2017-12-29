@@ -71,7 +71,6 @@ def leader(request):
     if orfik.end_time <= timezone.now():
         data['winner'] = data['players'][0]
     attempts = models.Attempt.objects.filter(question__event=orfik, correct=True).order_by('stamp')
-    #data['image'] = utils.get_plot_string(attempts, orfik, max_question)
     return render(request, template, data)
 
 

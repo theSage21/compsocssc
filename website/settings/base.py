@@ -36,8 +36,6 @@ INSTALLED_APPS = (
     'events.logo',
     'events.sell_it',
     'events.orfik',
-    # 'metrics',
-    # 'join',
     'import_export',
 )
 
@@ -60,7 +58,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'metrics.middleware.HitRecorder'
 )
 
 ROOT_URLCONF = 'website.urls'
