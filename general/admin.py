@@ -25,6 +25,6 @@ class MemberAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 admin.site.register(models.CompMember, MemberAdmin)
 admin.site.register(User, UserAdmin)
-admin.site.register(models.Variable)
+
 
 admin.site.unregister(Group)
