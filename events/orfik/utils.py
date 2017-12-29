@@ -1,13 +1,14 @@
 import io
 import base64
 import random
-import matplotlib.pyplot as plt
-import pandas as pd
+#import matplotlib.pyplot as plt
+#import pandas as pd
 
 def jitter(iterable):
     return [i + ((1 if random.random() > 0.5 else -1) *
         random.random() * 0.05) for i in iterable]
 
+'''
 def get_plot_string(attempts, orfik, max_question):
     "Given attempts, orfik, and max_question limit return a graph string"
     df = pd.DataFrame([(i.stamp, i.player) for i in attempts], columns=['stamp', 'player'])
@@ -36,3 +37,4 @@ def get_plot_string(attempts, orfik, max_question):
         string = base64.b64encode(buf.getvalue())
         plt.close()
     return string
+'''

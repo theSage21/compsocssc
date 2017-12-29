@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^logout/$', views.logout, name='logout'),
     # CompSoc join
-    url(r'^join/', include('join.urls', namespace='join')),
+    # url(r'^join/', include('join.urls', namespace='join')),
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
